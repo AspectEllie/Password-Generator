@@ -90,7 +90,18 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+var passwordLength = prompt("How long would you like the password to be? Please enter a number between 8-128 for the number of characters.")
+var hasLowercase = confirm("Do you want your password to have Lowercase letters? Click 'OK' to confirm or 'Cancel' to skip.")
+var hasUppercase = confirm("Do you want your password to have Uppercase letters? Click 'OK' to confirm or 'Cancel' to skip.")
+var hasNumeric = confirm("Do you want your password to have Numbers? Click 'OK' to confirm or 'Cancel' to skip.")
+var hasSpecialCharacters = confirm("Do you want your password to have Special characters ($@%&*, etc)? Click 'OK' to confirm or 'Cancel' to skip.")
+return {
+  passwordLength,
+  hasLowercase,
+  hasUppercase,
+  hasNumeric,
+  hasSpecialCharacters
+}
 }
 
 // Function for getting a random element from an array
@@ -100,7 +111,8 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-
+var passwordOptions = getPasswordOptions()
+console.log(passwordOptions)
 }
 
 // Get references to the #generate element
