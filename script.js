@@ -90,9 +90,17 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var passwordLength = prompt(
-    "How long would you like the password to be? Please enter a number between 8-128 for the number of characters."
-  );
+  var passwordLength = 0;
+
+  // Repropmt user for valid password length while length is less than 8 or greater than 128 or is not a number
+  while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    passwordLength = parseInt(
+      prompt(
+        "How long would you like the password to be? Please enter a number between 8-128 for the number of characters."
+      )
+    );
+  }
+
   var hasLowercase = confirm(
     "Do you want your password to have Lowercase letters? Click 'OK' to confirm or 'Cancel' to skip."
   );
@@ -121,7 +129,6 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-
   // Get initial user input
   var passwordOptions = getPasswordOptions();
 
@@ -161,7 +168,7 @@ function generatePassword() {
 
   // Initialise password string
   var password = "";
-  
+
   // For each character in the choosen length, generate a random character from the chosen characters list
   for (var index = 0; index < passwordOptions.passwordLength; index++) {
     password += getRandom(chosenCharacters);
